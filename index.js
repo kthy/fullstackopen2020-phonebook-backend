@@ -2,9 +2,14 @@ const express = require('express')
 const morgan = require('morgan')
 const { v4: uuidv4 } = require('uuid');
 
+morgan.token('body', req => {
+    const body = JSON.stringify(req.body)
+    return body === '{}' ? null : body
+})
+
 const Backend = express()
   .use(express.json())
-  .use(morgan('tiny'))
+  .use(morgan(':method :url :status :res[content-length] - :response-time ms :body'))
 
 let persons = [
   {
