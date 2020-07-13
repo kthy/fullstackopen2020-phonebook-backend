@@ -1,0 +1,34 @@
+{
+  "name": "phonebook-backend",
+  "version": "0.0.1",
+  "description": "Coursework for <https://fullstackopen.com/>.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kthy/fullstackopen2020-phonebook-backend.git"
+  },
+  "keywords": [
+    "mooc",
+    "coursework",
+    "nodejs",
+    "express"
+  ],
+  "author": "Kristian Thy <thy@42.dk>",
+  "license": "0BSD",
+  "bugs": {
+    "url": "https://github.com/kthy/fullstackopen2020-phonebook-backend/issues"
+  },
+  "homepage": "https://github.com/kthy/fullstackopen2020-phonebook-backend#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "uuid": "^8.2.0"
+  }
+}

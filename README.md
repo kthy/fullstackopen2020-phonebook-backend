@@ -1,2 +1,3 @@
-# fullstackopen2020-phonebook-backend
-Full Stack Open 2020 - Phonebook Backend
+# Full Stack Open 2020 - Phonebook Backend
+
+Coursework for <https://fullstackopen.com/>.
