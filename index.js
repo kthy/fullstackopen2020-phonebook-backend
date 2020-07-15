@@ -84,7 +84,7 @@ Backend.get('/info', (req, res) => {
   res.send(`<html><head><title>Phonebook</title></head><body><p>This phonebook contains ${persons.length} people.</p><p>${Date()}</p></body></html>`)
 })
 
-const PORT = 3001
+const PORT = process.env.PORT || 3001
 Backend.listen(PORT, () => {
   console.log(`Phonebook backend running on port ${PORT}`)
 })
