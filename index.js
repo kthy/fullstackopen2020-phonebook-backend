@@ -17,18 +17,11 @@ morgan.token('body', request => {
   return body === '{}' ? null : body
 })
 
-const Backend = express() 
+const Backend = express()
   .use(express.static('build'))
   .use(express.json())
   .use(cors())
   .use(morgan(':method :url :status :res[content-length] - :response-time ms :body'))
-
-function returnError(response, error, code=HTTP_SERVER_ERROR) {
-  console.log(error)
-  response
-    .status(code)
-    .json({ error: error })
-}
 
 Backend.get('/api/persons', (_, response) => {
   Person
@@ -101,7 +94,7 @@ Backend.use((_, response) => {
   response.status(HTTP_NOT_FOUND).send({ error: 'unknown endpoint' })
 })
 
-Backend.use((error, request, response, next) => {
+Backend.use((error, _request, response, _next) => {
   console.log('error', error)
   if (error.name === 'CastError') {
     return response
