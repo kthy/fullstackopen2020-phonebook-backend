@@ -1,5 +1,4 @@
-console.log('process.env.NODE_ENV', process.env.NODE_ENV)
-require('dotenv-expand')(require('dotenv').config())
+if (process.env.NODE_ENV !== 'production') require('dotenv-expand')(require('dotenv').config())
 
 const express = require('express')
 const cors = require('cors')
