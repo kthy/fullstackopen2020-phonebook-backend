@@ -58,7 +58,7 @@ Backend.put('/api/persons/:id', (request, response, next) => {
   }
 
   Person
-    .findByIdAndUpdate(request.params.id, person, { new: true })
+    .findByIdAndUpdate(request.params.id, person, { new: true, runValidators: true, context: 'query' })
     .then(updatedPerson => {
       if (updatedPerson) {
         response.json(updatedPerson)
@@ -72,25 +72,13 @@ Backend.put('/api/persons/:id', (request, response, next) => {
 Backend.post('/api/persons', (request, response, next) => {
   const body = request.body
 
-  if (!(body.name && body.number)) {
-    returnError(response, 'name and/or number missing', HTTP_BAD_REQUEST)
-  }
-
-  Person
-    .findOne({ 'name': body.name })
-    .then(result => {
-      if (result) {
-        returnError(response, `${body.name} is already in the phonebook`, HTTP_BAD_REQUEST)
-      } else {
-        new Person({
-          name: body.name,
-          number: body.number,
-        }).save()
-          .then(savedPerson => response
-            .status(HTTP_CREATED)
-            .json(savedPerson))
-      }
-    })
+  new Person({
+    name: body.name,
+    number: body.number,
+  }).save()
+    .then(savedPerson => response
+      .status(HTTP_CREATED)
+      .json(savedPerson))
     .catch(error => next(error))
 })
 
