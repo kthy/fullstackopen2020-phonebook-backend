@@ -1,3 +1,4 @@
+console.log('process.env.NODE_ENV', process.env.NODE_ENV)
 require('dotenv-expand')(require('dotenv').config())
 
 const express = require('express')
